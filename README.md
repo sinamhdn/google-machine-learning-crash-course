@@ -1,1 +1,1 @@
-# google-colab-courses
+# google-machine-learning-crash-course
