@@ -116,6 +116,8 @@ print("Read dataset completed successfully.")
 print("Total number of rows: {0}\n\n".format(len(training_df.index)))
 print("\n\n||||First 200 rows of dataset||||\n\n", training_df.head(200))
 
+###########################################################################################################################
+
 # View dataset statistics
 print("Total number of rows: {0}\n\n".format(len(training_df.index)))
 print("\n\n||||Dataset Statistics||||\n\n", training_df.describe(include="all"))
@@ -155,6 +157,8 @@ print("What is the most frequent payment type? \t\tAnswer: {type}".format(type =
 missing_values = training_df.isnull().sum().sum()
 print("Are any features missing data? \t\t\t\tAnswer:", "No" if missing_values == 0 else "Yes")
 
+###########################################################################################################################
+
 #View correlation matrix
 print("\n\n||||Correlation Matrix||||\n\n", training_df.corr(numeric_only = True))
 
@@ -176,9 +180,14 @@ print(answer)
 answer = '''The feature with the weakest correlation to the FARE is TIP_RATE.'''
 print(answer)
 
+###########################################################################################################################
+
 # View pairplot to see relationships between features
 sns.pairplot(training_df, x_vars=["FARE", "TRIP_MILES", "TRIP_SECONDS"], y_vars=["FARE", "TRIP_MILES", "TRIP_SECONDS"])
+plt.gcf().canvas.manager.set_window_title("Relationships/Correlation between plots")
 plt.show()
+
+###########################################################################################################################
 
 # Define plotting functions
 
@@ -253,6 +262,12 @@ def plot_model(df, features, weights, bias, fig):
 
   return
 
+print("SUCCESS: defining plotting functions complete.")
+
+###########################################################################################################################
+
+# Define ML functions
+
 def model_info(feature_names, label_name, model_output):
   weights = model_output[0]
   bias = model_output[1]
@@ -272,10 +287,6 @@ def model_info(feature_names, label_name, model_output):
   equation = equation + "{:.3f}\n".format(bias[0])
 
   return banner + nl + info + nl + equation
-
-print("SUCCESS: defining plotting functions complete.")
-
-# Define ML functions
 
 def build_model(my_learning_rate, num_features):
   """Create and compile a simple linear regression model."""
